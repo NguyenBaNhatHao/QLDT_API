@@ -15,11 +15,11 @@ namespace VidoWebApi.Profiles{
             .ForMember(dest=>dest.Hedaotao,act=>act.MapFrom(src=>src.Hedaotao))
             .ForMember(dest=>dest.Monhoc,act=>act.MapFrom(src=>src.Monhoc))
             .ForMember(dest=>dest.Lop,act=>act.MapFrom(src=>src.Lop))
-            .ForMember(dest=>dest.SoTC,act=>act.MapFrom(src=>src.SoTC))
-            .ForMember(dest=>dest.Khoa,act=>act.MapFrom(src=>src.Khoa))
+            .ForMember(dest=>dest.SoTinchi,act=>act.MapFrom(src=>src.SoTinchi))
+            .ForMember(dest=>dest.KhoaHoc,act=>act.MapFrom(src=>src.KhoaHoc))
             .ForMember(dest=>dest.Namhoc,act=>act.MapFrom(src=>src.Namhoc))
-            .ForMember(dest=>dest.Nguoicapnhat,act=>act.MapFrom(src=>src.Nguoicapnhat))
-            .ForMember(dest=>dest.Nguoitao,act=>act.MapFrom(src=>src.Nguoitao));
+            .ForMember(dest=>dest.nguoiCapNhat,act=>act.MapFrom(src=>src.nguoiCapNhat))
+            .ForMember(dest=>dest.nguoiTao,act=>act.MapFrom(src=>src.nguoiTao));
             CreateMap<Diemdanh,DiemdanhReadDto>();
         }
     }

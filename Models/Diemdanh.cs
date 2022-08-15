@@ -11,11 +11,11 @@ namespace QLDT_API.Models{
         public string? Hedaotao { get; set; }
         public string? Monhoc { get; set; }
         public string? Lop { get; set; }
-        public string? SoTC { get; set; }
-        public string? Khoa { get; set; }
+        public int? SoTinchi { get; set; }
+        public string? KhoaHoc { get; set; }
         public string? Namhoc { get; set; }
-        public string? Nguoitao { get; set; }
-        public string? Nguoicapnhat { get; set; }
+        public string? nguoiTao { get; set; }
+        public string? nguoiCapNhat { get; set; }
 
     }
 }
