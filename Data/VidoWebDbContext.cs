@@ -10,6 +10,8 @@ namespace QLDT_API.Data{
         {
             modelBuilder.Entity<Diemdanh>()
                 .HasNoKey();
+            
         }
+        
     }
 }
