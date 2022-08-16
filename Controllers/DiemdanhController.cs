@@ -42,6 +42,7 @@ namespace VidoWebApi.Controllers{
                 return Ok(data);
             }     
             }catch(Exception ex){
+                Console.WriteLine(ex.Message);
                 return BadRequest(ex.Message);
             }                                                                                   
         }
