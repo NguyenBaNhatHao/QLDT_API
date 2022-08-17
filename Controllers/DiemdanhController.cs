@@ -5,6 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
+using System.Text;
 using System.Data;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
@@ -30,6 +31,8 @@ namespace VidoWebApi.Controllers{
             var Monhoc = new SqlParameter("@monhoc", subscription.Monhoc);
             var Nguoitao = new SqlParameter("@nguoitao", subscription.nguoiTao);
             try{
+                var jsonResult = new StringBuilder();
+                var data = new StringBuilder(); 
                 using (var cmd = _context.Database.GetDbConnection().CreateCommand()) {
                 cmd.CommandText = "sp_api_diemdanh";
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
@@ -37,9 +40,19 @@ namespace VidoWebApi.Controllers{
                 cmd.Parameters.Add(new SqlParameter("@lop", subscription.Lop));
                 cmd.Parameters.Add(new SqlParameter("@monhoc", subscription.Monhoc));
                 cmd.Parameters.Add(new SqlParameter("@nguoitao", subscription.nguoiTao));
-
-                var data = cmd.ExecuteScalar();
-                return Ok(data);
+                var reader = cmd.ExecuteReader();
+                if (!reader.HasRows)
+                {
+                    jsonResult.Append("[]");
+                }
+                else
+                {
+                    while (reader.Read())
+                    {
+                        data = jsonResult.Append(reader.GetValue(0).ToString());
+                    }
+                }
+                return Ok(data.ToString().Replace("\\",""));
             }     
             }catch(Exception ex){
                 Console.WriteLine(ex.Message);
