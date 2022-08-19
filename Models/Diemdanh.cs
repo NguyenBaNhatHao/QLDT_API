@@ -1,7 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 namespace QLDT_API.Models{
     public class Diemdanh{
-        
+        [Key]
+        [Required]
         public int? id { get; set; }
         public string? Hoten { get; set; }
         public string? Ngaysinh { get; set; }

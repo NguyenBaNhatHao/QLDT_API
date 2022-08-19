@@ -95,5 +95,46 @@ namespace VidoWebApi.Controllers{
                 return BadRequest(ex.Message);
             }                                                                                   
         }
+        [HttpGet("lop")]
+        public ActionResult<List<Lopmonhoc>> GetLop(){
+            var query = from ma in _context.tbl_QLDT_TKB_LopMonHoc select ma; 
+            var dataQuery = query.ToList();
+            return dataQuery;
+        }
+        [HttpGet("monhoc")]
+        public ActionResult<List<Monhoc>> Getmonhoc(){ 
+            var query = from ten in _context.tbl_QLDT_CTDT_MonHoc select ten; 
+            var dataQuery = query.ToList();
+            return dataQuery;
+        }
+        [HttpGet("nguoitao")]
+        public ActionResult<List<NguoitaoReadDTO>> Getnguoitao(){ 
+            try{
+                var jsonResult = new StringBuilder();
+                var data = new StringBuilder(); 
+                using (var cmd = _context.Database.GetDbConnection().CreateCommand()) {
+                cmd.CommandText = "sp_api_diemdanh_nguoitao";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                if (cmd.Connection.State != System.Data.ConnectionState.Open) cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (!reader.HasRows)
+                {
+                    jsonResult.Append("[]");
+                }
+                else
+                {
+                    while (reader.Read())
+                    {
+                        data = jsonResult.Append(reader.GetValue(0).ToString());
+                    }
+                }
+                return Ok(data.ToString().Replace("\\",""));
+            }     
+            }catch(Exception ex){
+                Console.WriteLine(ex.Message);
+                return BadRequest(ex.Message);
+            }
+        }
+        
     }
 }
