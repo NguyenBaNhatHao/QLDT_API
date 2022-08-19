@@ -97,7 +97,7 @@ namespace VidoWebApi.Controllers{
         }
         [HttpGet("lop")]
         public ActionResult<List<Lopmonhoc>> GetLop(){
-            var query = from ma in _context.tbl_QLDT_TKB_LopMonHoc select ma; 
+            var query = from ma in _context.tbl_QLDT_TKB_LopMonHoc orderby ma.ma select ma; 
             var dataQuery = query.ToList();
             return dataQuery;
         }
@@ -135,6 +135,34 @@ namespace VidoWebApi.Controllers{
                 return BadRequest(ex.Message);
             }
         }
-        
+        [HttpGet("khoahoc")]
+        public ActionResult<List<NguoitaoReadDTO>> Getkhoahoc(){ 
+            try{
+                var jsonResult = new StringBuilder();
+                var data = new StringBuilder(); 
+                using (var cmd = _context.Database.GetDbConnection().CreateCommand()) {
+                cmd.CommandText = "sp_api_diemdanh_khoahoc";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                if (cmd.Connection.State != System.Data.ConnectionState.Open) cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                if (!reader.HasRows)
+                {
+                    jsonResult.Append("[]");
+                }
+                else
+                {
+                    while (reader.Read())
+                    {
+                        data = jsonResult.Append(reader.GetValue(0).ToString());
+                    }
+                }
+                return Ok(data.ToString().Replace("\\",""));
+            }     
+            }catch(Exception ex){
+                Console.WriteLine(ex.Message);
+                return BadRequest(ex.Message);
+            }
+        }
+ 
     }
 }
