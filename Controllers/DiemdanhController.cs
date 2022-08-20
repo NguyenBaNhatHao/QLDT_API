@@ -28,8 +28,6 @@ namespace VidoWebApi.Controllers{
         public ActionResult<DiemdanhReadDto> GetDiemdanh(DiemdanhSendDto diemdanhSendDto){
             var subscription = _mapper.Map<Diemdanh>(diemdanhSendDto);
             var Lop = new SqlParameter("@lop", subscription.Lop);
-            var Monhoc = new SqlParameter("@monhoc", subscription.Monhoc);
-            var Nguoitao = new SqlParameter("@nguoitao", subscription.nguoiTao);
             try{
                 var jsonResult = new StringBuilder();
                 var data = new StringBuilder(); 
@@ -38,8 +36,6 @@ namespace VidoWebApi.Controllers{
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 if (cmd.Connection.State != System.Data.ConnectionState.Open) cmd.Connection.Open();
                 cmd.Parameters.Add(Lop);
-                cmd.Parameters.Add(Monhoc);
-                cmd.Parameters.Add(Nguoitao);
                 var reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
                 {
@@ -63,8 +59,6 @@ namespace VidoWebApi.Controllers{
         public ActionResult<DiemdanhReadDto> GetHeaderdiemdanh(DiemdanhSendDto diemdanhSendDto){
             var subscription = _mapper.Map<Diemdanh>(diemdanhSendDto);
             var Lop = new SqlParameter("@lop", subscription.Lop);
-            var Monhoc = new SqlParameter("@monhoc", subscription.Monhoc);
-            var Khoahoc = new SqlParameter("@khoahoc", subscription.KhoaHoc);
             try{
                 var jsonResult = new StringBuilder();
                 var data = new StringBuilder(); 
@@ -73,8 +67,6 @@ namespace VidoWebApi.Controllers{
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 if (cmd.Connection.State != System.Data.ConnectionState.Open) cmd.Connection.Open();
                 cmd.Parameters.Add(Lop);
-                cmd.Parameters.Add(Monhoc);
-                cmd.Parameters.Add(Khoahoc);
                 var reader = cmd.ExecuteReader();
                 if (!reader.HasRows)
                 {
@@ -101,40 +93,6 @@ namespace VidoWebApi.Controllers{
             var dataQuery = query.ToList();
             return dataQuery;
         }
-        [HttpGet("monhoc")]
-        public ActionResult<List<Monhoc>> Getmonhoc(){ 
-            var query = from ten in _context.tbl_QLDT_CTDT_MonHoc select ten; 
-            var dataQuery = query.ToList();
-            return dataQuery;
-        }
-        [HttpGet("nguoitao")]
-        public ActionResult<List<NguoitaoReadDTO>> Getnguoitao(){ 
-            try{
-                var jsonResult = new StringBuilder();
-                var data = new StringBuilder(); 
-                using (var cmd = _context.Database.GetDbConnection().CreateCommand()) {
-                cmd.CommandText = "sp_api_diemdanh_nguoitao";
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                if (cmd.Connection.State != System.Data.ConnectionState.Open) cmd.Connection.Open();
-                var reader = cmd.ExecuteReader();
-                if (!reader.HasRows)
-                {
-                    jsonResult.Append("[]");
-                }
-                else
-                {
-                    while (reader.Read())
-                    {
-                        data = jsonResult.Append(reader.GetValue(0).ToString());
-                    }
-                }
-                return Ok(data.ToString().Replace("\\",""));
-            }     
-            }catch(Exception ex){
-                Console.WriteLine(ex.Message);
-                return BadRequest(ex.Message);
-            }
-        }
-        
+               
     }
 }
