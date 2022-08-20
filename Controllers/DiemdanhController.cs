@@ -28,6 +28,7 @@ namespace VidoWebApi.Controllers{
         public ActionResult<DiemdanhReadDto> GetDiemdanh(DiemdanhSendDto diemdanhSendDto){
             var subscription = _mapper.Map<Diemdanh>(diemdanhSendDto);
             var Lop = new SqlParameter("@lop", subscription.Lop);
+            //test
             try{
                 var jsonResult = new StringBuilder();
                 var data = new StringBuilder(); 
