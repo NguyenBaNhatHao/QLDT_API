@@ -10,7 +10,6 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using NReco.PivotData;
 using System.Dynamic;
 using System.Collections.Specialized;
 
