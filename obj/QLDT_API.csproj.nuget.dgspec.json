@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\duantailieuCNTT\\QLDT_API\\QLDT_API.csproj": {}
+    "E:\\QLDT_API\\QLDT_API.csproj": {}
   },
   "projects": {
-    "D:\\duantailieuCNTT\\QLDT_API\\QLDT_API.csproj": {
+    "E:\\QLDT_API\\QLDT_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\duantailieuCNTT\\QLDT_API\\QLDT_API.csproj",
+        "projectUniqueName": "E:\\QLDT_API\\QLDT_API.csproj",
         "projectName": "QLDT_API",
-        "projectPath": "D:\\duantailieuCNTT\\QLDT_API\\QLDT_API.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\duantailieuCNTT\\QLDT_API\\obj\\",
+        "projectPath": "E:\\QLDT_API\\QLDT_API.csproj",
+        "packagesPath": "C:\\Users\\HoangQuan\\.nuget\\packages\\",
+        "outputPath": "E:\\QLDT_API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HoangQuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,7 +97,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -105,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
