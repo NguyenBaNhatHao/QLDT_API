@@ -715,6 +715,19 @@
           }
         }
       },
+      "NReco.PivotData/1.4.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/NReco.PivotData.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/NReco.PivotData.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "RabbitMQ.Client/6.4.0": {
         "type": "package",
         "dependencies": {
@@ -3499,6 +3512,23 @@
         "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
         "newtonsoft.json.bson.1.0.1.nupkg.sha512",
         "newtonsoft.json.bson.nuspec"
+      ]
+    },
+    "NReco.PivotData/1.4.1": {
+      "sha512": "wfqi9eHCDEhpKBzauefBAdVkPCDp8J3K0BNEkkYRI9jTgIHOdxjkYTv0cW/wfxnffk33/cJgjpAI+ep07BBtkA==",
+      "type": "package",
+      "path": "nreco.pivotdata/1.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/NReco.PivotData.dll",
+        "lib/net45/NReco.PivotData.xml",
+        "lib/netstandard2.0/NReco.PivotData.dll",
+        "lib/netstandard2.0/NReco.PivotData.xml",
+        "lib/netstandard2.1/NReco.PivotData.dll",
+        "lib/netstandard2.1/NReco.PivotData.xml",
+        "nreco.pivotdata.1.4.1.nupkg.sha512",
+        "nreco.pivotdata.nuspec"
       ]
     },
     "RabbitMQ.Client/6.4.0": {
@@ -7516,6 +7546,7 @@
       "Microsoft.EntityFrameworkCore >= 6.0.7",
       "Microsoft.EntityFrameworkCore.design >= 6.0.7",
       "Microsoft.EntityFrameworkCore.sqlserver >= 6.0.7",
+      "NReco.PivotData >= 1.4.1",
       "Newtonsoft.Json >= 13.0.1",
       "Swashbuckle.AspNetCore >= 6.4.0",
       "System.ComponentModel.Annotations >= 5.0.0",
@@ -7592,6 +7623,10 @@
           "Microsoft.EntityFrameworkCore.sqlserver": {
             "target": "Package",
             "version": "[6.0.7, )"
+          },
+          "NReco.PivotData": {
+            "target": "Package",
+            "version": "[1.4.1, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",

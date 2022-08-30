@@ -10,7 +10,9 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+using NReco.PivotData;
+using System.Dynamic;
+using System.Collections.Specialized;
 
 namespace VidoWebApi.Controllers{
     [Route("api/[controller]")]
@@ -28,27 +30,29 @@ namespace VidoWebApi.Controllers{
         public ActionResult<DiemdanhReadDto> GetDiemdanh(DiemdanhSendDto diemdanhSendDto){
             var subscription = _mapper.Map<Diemdanh>(diemdanhSendDto);
             var Lop = new SqlParameter("@lop", subscription.Lop);
+            List<String> ListData = new List<String>();
             try{
                 var jsonResult = new StringBuilder();
-                var data = new StringBuilder(); 
+                var data = new StringBuilder();
+                var ListDiemdanh = new List<OrderedDictionary>();
                 using (var cmd = _context.Database.GetDbConnection().CreateCommand()) {
                 cmd.CommandText = "sp_api_diemdanh";
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 if (cmd.Connection.State != System.Data.ConnectionState.Open) cmd.Connection.Open();
                 cmd.Parameters.Add(Lop);
                 var reader = cmd.ExecuteReader();
-                if (!reader.HasRows)
-                {
-                    jsonResult.Append("[]");
-                }
-                else
-                {
-                    while (reader.Read())
-                    {
-                        data = jsonResult.Append(reader.GetValue(0).ToString());
+                while(reader.Read()){
+                    var dictionary = new OrderedDictionary();
+                    for(int i = 0; i < reader.FieldCount; i++){
+                        if(reader[i] == DBNull.Value){
+                            dictionary.Add(reader.GetName(i),"0");
+                        }else{
+                            dictionary.Add(reader.GetName(i),reader[i].ToString());
+                        }
                     }
+                    ListDiemdanh.Add(dictionary);
                 }
-                return Ok(data.ToString().Replace("\\",""));
+                return Ok(ListDiemdanh);
             }     
             }catch(Exception ex){
                 Console.WriteLine(ex.Message);
