@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\QLDT_API\\QLDT_API.csproj": {}
+    "D:\\duantailieuCNTT\\QLDT_API\\QLDT_API.csproj": {}
   },
   "projects": {
-    "E:\\QLDT_API\\QLDT_API.csproj": {
+    "D:\\duantailieuCNTT\\QLDT_API\\QLDT_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\QLDT_API\\QLDT_API.csproj",
+        "projectUniqueName": "D:\\duantailieuCNTT\\QLDT_API\\QLDT_API.csproj",
         "projectName": "QLDT_API",
-        "projectPath": "E:\\QLDT_API\\QLDT_API.csproj",
-        "packagesPath": "C:\\Users\\HoangQuan\\.nuget\\packages\\",
-        "outputPath": "E:\\QLDT_API\\obj\\",
+        "projectPath": "D:\\duantailieuCNTT\\QLDT_API\\QLDT_API.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\duantailieuCNTT\\QLDT_API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HoangQuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

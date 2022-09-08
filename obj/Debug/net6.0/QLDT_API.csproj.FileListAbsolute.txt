@@ -153,3 +153,4 @@ D:\duantailieuCNTT\QLDT_API\obj\Debug\net6.0\QLDT_API.csproj.CopyComplete
 D:\duantailieuCNTT\QLDT_API\obj\Debug\net6.0\QLDT_API.genruntimeconfig.cache
 D:\duantailieuCNTT\QLDT_API\obj\Debug\net6.0\ref\QLDT_API.dll
 E:\QLDT_API\bin\Debug\net6.0\NReco.PivotData.dll
+D:\duantailieuCNTT\QLDT_API\bin\Debug\net6.0\NReco.PivotData.dll

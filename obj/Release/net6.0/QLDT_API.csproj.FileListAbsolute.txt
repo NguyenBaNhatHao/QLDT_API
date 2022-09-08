@@ -152,3 +152,4 @@ E:\QLDT_API\obj\Release\net6.0\refint\QLDT_API.dll
 E:\QLDT_API\obj\Release\net6.0\QLDT_API.pdb
 E:\QLDT_API\obj\Release\net6.0\QLDT_API.genruntimeconfig.cache
 E:\QLDT_API\obj\Release\net6.0\ref\QLDT_API.dll
+D:\duantailieuCNTT\QLDT_API\bin\Release\net6.0\NReco.PivotData.dll
