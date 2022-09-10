@@ -93,9 +93,33 @@ namespace VidoWebApi.Controllers{
         }
         [HttpGet("lop")]
         public ActionResult<List<Lopmonhoc>> GetLop(){
-            var query = from ma in _context.tbl_QLDT_TKB_LopMonHoc orderby ma.ma select ma; 
-            var dataQuery = query.ToList();
-            return dataQuery;
+            List<String> ListData = new List<String>();
+            try{
+                var jsonResult = new StringBuilder();
+                var data = new StringBuilder();
+                var ListDiemdanh = new List<OrderedDictionary>();
+                using (var cmd = _context.Database.GetDbConnection().CreateCommand()) {
+                cmd.CommandText = "sp_api_diemdanh_lopmonhoc";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                if (cmd.Connection.State != System.Data.ConnectionState.Open) cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                while(reader.Read()){
+                    var dictionary = new OrderedDictionary();
+                    for(int i = 0; i < reader.FieldCount; i++){
+                        if(reader[i] == DBNull.Value){
+                            dictionary.Add(reader.GetName(i),"0");
+                        }else{
+                            dictionary.Add(reader.GetName(i),reader[i].ToString());
+                        }
+                    }
+                    ListDiemdanh.Add(dictionary);
+                }
+                return Ok(ListDiemdanh);
+            }     
+            }catch(Exception ex){
+                Console.WriteLine(ex.Message);
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
